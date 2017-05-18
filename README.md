@@ -1,2 +1,2 @@
-# pong
-Multiplayer based pong game
+# DrawingEditor
+Basic drawing editor

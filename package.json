@@ -1,21 +1,21 @@
 {
-  "name": "pong",
+  "name": "drawingeditor",
   "version": "1.0.0",
-  "description": "Multiplayer Pong",
+  "description": "drawing editor",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tiberiusuciu/pong.git"
+    "url": "git+https://github.com/jdionnemorin/drawingeditor.git"
   },
-  "author": "tiberiusuciu",
+  "author": "jonathan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tiberiusuciu/pong/issues"
+    "url": "https://github.com/jdionnemorin/drawingeditor/issues"
   },
-  "homepage": "https://github.com/tiberiusuciu/pong#readme",
+  "homepage": "https://github.com/jdionnemorin/drawingeditor#readme",
   "devDependencies": {
     "express": "^4.15.2"
   },
