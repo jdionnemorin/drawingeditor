@@ -4,36 +4,8 @@ body {
    overflow:hidden;
 }
 
-#red {
-
-   background-color: #ad1414;
-}
-
-#red:hover {
-   color: black;
-}
-
-#blue {
-   background-color: #1d3393;
-}
-
-#blue:hover {
-   color: black;
-}
-
-#green {
-   background-color: green;
-}
-
-#green:hover{
-   color: black;
-}
-
-#yellow {
-   background-color: yellow;
-}
-#yellow:hover {
-   color: black;
+#drawing {
+   cursor:url(images/crayon.cur),auto;
 }
 
 #eraser {
@@ -46,4 +18,16 @@ body {
 #title {
    color: white;
    cursor: default;
+}
+
+#color {
+   height: 30px;
+   border: none;
+}
+
+#width {
+   margin-left: 10px;
+}
+#width-label {
+   color: white;
 }
