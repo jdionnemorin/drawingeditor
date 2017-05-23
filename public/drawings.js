@@ -4,7 +4,7 @@ var stroke = {
 	color: '#000000',
 	width: 2
 };
-// 1 = line 2 = rect
+
 var type = 'rect';
 
 
@@ -21,7 +21,23 @@ var changeWidth = function() {
 	stroke.width = document.getElementById('width').value;
 };
 
+var changeType = function(newType) {
+	type = newType;
+};
+
+var downloadCanvas = function() {
+	var canvasUrl = canvas.toDataURL('image/png');
+
+	/* Change MIME type to trick the browser to download the file instead of displaying it */
+	canvasUrl = canvasUrl.replace(/^data:image\/[^;]*/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=Canvas.png');
+
+	this.href = canvasUrl;
+};
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
+	document.getElementById("download").addEventListener('click', downloadCanvas, false);
 	var mouse = {
 		click: false,
 		move: false,
@@ -51,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	};
 
 	socket.on('draw_line', function (data) {
-		var line = data.line;
+		var line = data.position;
 		context.strokeStyle = data.stroke.color;
 		context.lineCap = "round";
 		context.beginPath();
@@ -63,8 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 
 	socket.on('draw_rect', function (data) {
-		console.log('ok');
-		var line = data.line;
+		var line = data.position;
 		context.strokeStyle = data.stroke.color;
 		context.lineWidth = data.stroke.width;
 		var x = Math.min(line[0].x * width,  line[1].x * width),
@@ -82,13 +97,13 @@ document.addEventListener("DOMContentLoaded", function() {
 		if (mouse.click && mouse.move && mouse.pos_prev) {
 			switch(type) {
 				case 'pen' :
-					socket.emit('draw_line', { line: [ mouse.pos, mouse.pos_prev ], stroke: stroke });
+					socket.emit('draw_line', { position: [ mouse.pos, mouse.pos_prev ], stroke: stroke });
 					break;
 				case 'rect' :
-					socket.emit('draw_rect', { line: [ mouse.pos, mouse.pos_prev ], stroke: stroke });
+					socket.emit('draw_rect', { position: [ mouse.pos, mouse.pos_prev ], stroke: stroke });
 					break;
 				default:
-					socket.emit('draw_line', { line: [ mouse.pos, mouse.pos_prev ], stroke: stroke });
+					socket.emit('draw_line', { position: [ mouse.pos, mouse.pos_prev ], stroke: stroke });
 			}
 
 			mouse.move = false;

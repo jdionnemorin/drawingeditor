@@ -17,21 +17,21 @@ var rectStrokeHistory = [];
 
 io.on('connection', function (socket) {
 	for (var i in line_history) {
-		socket.emit('draw_line', { line: line_history[i], stroke: lineStrokeHistory[i] } );
+		socket.emit('draw_line', { position: line_history[i], stroke: lineStrokeHistory[i] } );
 	}
 	for (var i in rect_history) {
-		socket.emit('draw_line', { line: rect_history[i], stroke: rectStrokeHistory[i] } );
+		socket.emit('draw_line', { position: rect_history[i], stroke: rectStrokeHistory[i] } );
 	}
 	socket.on('draw_line', function (data) {
-		line_history.push(data.line);
+		line_history.push(data.position);
 		lineStrokeHistory.push(data.stroke);
-		io.emit('draw_line', { line: data.line, stroke: data.stroke});
+		io.emit('draw_line', { position: data.position, stroke: data.stroke});
 	});
 
 	socket.on('draw_rect', function (data) {
-		rect_history.push(data.line);
+		rect_history.push(data.position);
 		rectStrokeHistory.push(data.stroke);
-		io.emit('draw_line', { line: data.line, stroke: data.stroke});
+		io.emit('draw_rect', { position: data.position, stroke: data.stroke});
 	});
 
 	socket.on('reset', function() {
