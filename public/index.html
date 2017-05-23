@@ -22,16 +22,16 @@
                     </ul>
                     <form class="navbar-form navbar-left">
                         <div class="form-group">
-                            <input id="color" type="color"  value="#000000" onchange="changeColor()">
+                            <input id="color" type="color"  value="#000000" onchange="changeColor(false)">
                         </div>
                         <label id="width-label">TAILLE</label>
                         <div class="form-group">
 
-                            <input id="width" type="range" min="0" max="100" value="2" onchange="changeWidth()">
+                            <input id="width" type="range" min="1" max="100" value="2" onchange="changeWidth()">
                         </div>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a id="eraser"href="#" onclick="stroke.color = '#ffffff';">EFFACE</a></li>
+                        <li><a id="eraser"href="#" onclick="changeColor(true)">EFFACER</a></li>
                         <li><a href="#" onclick="reset()">RESET</a></li>
                         <li><a id="download" download="Canvas.png" href="#">TÉLÉCHARGER</a></li>
                     </ul>
@@ -40,7 +40,7 @@
         </nav>
 
         <canvas id="drawing">
-            <p class="noscript">We're sorry, this web application is currently not supported with your browser.</p>
+            <p>Cette application ne supporte pas votre navigateur.</p>
         </canvas>
     </body>
 </html>

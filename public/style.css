@@ -11,7 +11,12 @@ body {
 #eraser {
    background-color: white;
 }
+
 #eraser:hover {
+   color: black;
+}
+
+#eraser:visited {
    color: black;
 }
 

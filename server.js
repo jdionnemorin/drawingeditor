@@ -20,7 +20,7 @@ io.on('connection', function (socket) {
 		socket.emit('draw_line', { position: line_history[i], stroke: lineStrokeHistory[i] } );
 	}
 	for (var i in rect_history) {
-		socket.emit('draw_line', { position: rect_history[i], stroke: rectStrokeHistory[i] } );
+		socket.emit('draw_rect', { position: rect_history[i], stroke: rectStrokeHistory[i] } );
 	}
 	socket.on('draw_line', function (data) {
 		line_history.push(data.position);
