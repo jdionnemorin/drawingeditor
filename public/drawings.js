@@ -5,7 +5,7 @@ var stroke = {
 	width: 2
 };
 
-var type = 'rect';
+var type = 'pen';
 
 var reset = function() {
 	socket.emit('reset');
